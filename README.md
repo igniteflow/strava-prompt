@@ -2,6 +2,7 @@
 
 A nodejs module to preappend your bash/zsh liquid prompt with Strava data.
 
+
 ## Dependencies
 
 CoffeeScript
@@ -32,7 +33,7 @@ The process is split into two stages.  I've incuded the compile commands below f
 
 1. fetch the data from the Strava API and write a summary of it to file  `coffee --compile --bare --no-header -o ./bin stravaprompt.coffee && node bin/stravaprompt.js --update`
 
-2. update the bash/zsh prompt with the data `coffee --compile --bare --no-header -o ./bin stravaprompt.coffee && node bin/stravaprompt.js --update`
+2. print the prompt prefix to STDOUT `coffee --compile --bare --no-header -o ./bin stravaprompt.coffee && node bin/stravaprompt.js`.  Note that this is called in `~/.bashrc|zshrc`.
 
 
 ## Known Issues/Todo
