@@ -1,0 +1,23 @@
+{
+  "name": "strava",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "color-stdout": "^1.0.0",
+    "jsonfile": "^2.3.1",
+    "moment": "^2.13.0",
+    "path": "^0.12.7",
+    "request": "^2.67.0",
+    "strava-v3": "^1.9.0"
+  },
+  "scripts": {
+    "compile": "coffee --compile --bare --no-header -o ./bin strava-prompt.coffee && coffee --compile -o ./bin strava-update.coffee"
+  },
+  "author": "",
+  "license": "ISC",
+  "bin" : {
+      "stravaprompt" : "./bin/strava-prompt.js",
+      "stravaupdate" : "./bin/strava-update.js"
+  }
+}
