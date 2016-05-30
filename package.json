@@ -14,7 +14,8 @@
     "strava-v3": "^1.9.0"
   },
   "scripts": {
-    "prepublish": "coffee --compile --bare --no-header -o ./bin stravaprompt.coffee"
+    "prepublish": "coffee --compile --bare --no-header -o ./bin stravaprompt.coffee",
+    "preinstall": "coffee --compile --bare --no-header -o ./bin stravaprompt.coffee"
   },
   "author": "Phil Tysoe",
   "license": "MIT",

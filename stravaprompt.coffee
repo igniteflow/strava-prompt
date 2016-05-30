@@ -22,7 +22,7 @@ config
 ###
 
 # number of days for which to fetch activites
-NUM_DAYS = 2
+NUM_DAYS = 7
 
 # file to write the Strava activity summary data to
 SUMMARY_FILE = path.join(os.homedir(), '.strava_data.json')
@@ -84,7 +84,11 @@ update = () ->
     # fetch strava activities and write them to a file
     callback = (error, payload) ->
 
-        # as the params.after filter is not filtering the activities, then we do it manually
+        if error
+            console.log err
+
+        # as the params.after filter is not filtering the activities (appears to be a bug in strava-v3)
+        # so we do it manually
         activities = (act for act in payload when moment(act.start_date).isSameOrAfter(start))
 
         activitySummary =
@@ -97,7 +101,10 @@ update = () ->
             maxSpeed: max (a.max_speed for a in activities)
 
         # write the activities to a file
-        writeFileError = (err) -> console.log err
+        writeFileError = (err) ->
+            if err
+                console.log err
+
         jsonfile.writeFile(SUMMARY_FILE, activitySummary, {spaces: 2}, writeFileError)
 
         console.log "Strava summary written to #{SUMMARY_FILE}"
