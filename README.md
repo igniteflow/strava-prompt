@@ -7,6 +7,7 @@ A nodejs module to preappend your bash/zsh liquid prompt with Strava data.
 CoffeeScript
 liquidprompt
 
+
 ## Install
 
 Follow the instructions at https://www.npmjs.com/package/strava-v3 to get your Strava access token [FIXME: config data needs to be moved to a config file]
@@ -25,6 +26,16 @@ function _bashPrompt() {
 export PROMPT_COMMAND="_bashPrompt; $PROMPT_COMMAND"
 ```
 
+## Developing
+
+The process is split into two stages.  I've incuded the compile commands below for easier debugging:
+
+1. fetch the data from the Strava API and write a summary of it to file  `coffee --compile --bare --no-header -o ./bin stravaprompt.coffee && node bin/stravaprompt.js --update`
+
+2. update the bash/zsh prompt with the data `coffee --compile --bare --no-header -o ./bin stravaprompt.coffee && node bin/stravaprompt.js --update`
+
+
 ## Known Issues/Todo
 
 - Update script should run on a cron to periodically update
+- Global install is currently failing on installing the `bin/` script
